@@ -24,7 +24,7 @@ add('writable_dirs', []);
 
 // Hosts
 
-host('supersmartelectronics.com')
+host('142.93.189.118')
     ->user('lawrence')
     ->identityFile('~/.ssh/sselectronics_deployerkey')
     ->set('deploy_path', '/var/www/html/sselectronics');    
