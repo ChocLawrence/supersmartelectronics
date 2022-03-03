@@ -13,11 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
+        Schema::dropIfExists('product_attributes');
         Schema::create('product_attributes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->timestamps();
         });
+        Schema::enableForeignKeyConstraints();
     }
 
     /**
@@ -27,6 +30,8 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('product_attributes');
+        Schema::enableForeignKeyConstraints();
     }
 };

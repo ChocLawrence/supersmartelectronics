@@ -13,6 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
+        Schema::dropIfExists('settings');
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
             $table->string('email');
@@ -27,6 +29,7 @@ return new class extends Migration
             $table->string('youtube');
             $table->timestamps();
         });
+        Schema::enableForeignKeyConstraints();
     }
 
     /**
@@ -35,7 +38,9 @@ return new class extends Migration
      * @return void
      */
     public function down()
-    {
+    { 
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('settings');
+        Schema::enableForeignKeyConstraints();
     }
 };

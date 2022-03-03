@@ -13,6 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
+        Schema::dropIfExists('sessions');
         Schema::create('sessions', function (Blueprint $table) {
             $table->string('id')->primary();
             $table->foreignId('user_id')->nullable()->index();
@@ -21,6 +23,7 @@ return new class extends Migration
             $table->text('payload');
             $table->integer('last_activity')->index();
         });
+        Schema::enableForeignKeyConstraints();
     }
 
     /**
@@ -30,6 +33,8 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('sessions');
+        Schema::enableForeignKeyConstraints();
     }
 };

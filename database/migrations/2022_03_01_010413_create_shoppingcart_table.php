@@ -11,6 +11,8 @@ class CreateShoppingcartTable extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
+        Schema::dropIfExists(config('cart.database.table'));
         Schema::create(config('cart.database.table'), function (Blueprint $table) {
             $table->string('identifier');
             $table->string('instance');
@@ -19,12 +21,15 @@ class CreateShoppingcartTable extends Migration
 
             $table->primary(['identifier', 'instance']);
         });
+        Schema::enableForeignKeyConstraints();
     }
     /**
      * Reverse the migrations.
      */
     public function down()
     {
-        Schema::drop(config('cart.database.table'));
+        Schema::disableForeignKeyConstraints();
+        Schema::dropIfExists(config('cart.database.table'));
+        Schema::enableForeignKeyConstraints();
     }
 }

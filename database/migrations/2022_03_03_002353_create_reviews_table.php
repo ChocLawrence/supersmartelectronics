@@ -13,6 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
+        Schema::dropIfExists('reviews');
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
             $table->integer('rating');
@@ -21,6 +23,7 @@ return new class extends Migration
             $table->timestamps();
             $table->foreign('order_item_id')->references('id')->on('order_items')->onDelete('cascade');
         });
+        Schema::enableForeignKeyConstraints();
     }
 
     /**
@@ -30,6 +33,8 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('reviews');
+        Schema::enableForeignKeyConstraints();
     }
 };

@@ -13,6 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
+        Schema::dropIfExists('home_sliders');
         Schema::create('home_sliders', function (Blueprint $table) {
             $table->id();
             $table->string('title');
@@ -23,6 +25,7 @@ return new class extends Migration
             $table->boolean('status');
             $table->timestamps();
         });
+        Schema::enableForeignKeyConstraints();
     }
 
     /**
@@ -32,6 +35,8 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('home_sliders');
+        Schema::enableForeignKeyConstraints();
     }
 };

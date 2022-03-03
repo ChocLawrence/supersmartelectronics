@@ -13,6 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
+        Schema::dropIfExists('attribute_values');
         Schema::create('attribute_values', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('product_attribute_id')->unsigned()->nullable();
@@ -22,6 +24,7 @@ return new class extends Migration
             $table->foreign('product_attribute_id')->references('id')->on('product_attributes')->onDelete('cascade');
             $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         });
+        Schema::enableForeignKeyConstraints();
     }
 
     /**
@@ -31,6 +34,8 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('attribute_values');
+        Schema::enableForeignKeyConstraints();
     }
 };

@@ -15,6 +15,8 @@ return new class extends Migration
      */
     public function up()
     {
+        Schema::disableForeignKeyConstraints();
+        Schema::dropIfExists('coupons');
         Schema::create('coupons', function (Blueprint $table) {
             $table->id();
             $table->string('code')->unique();
@@ -24,6 +26,7 @@ return new class extends Migration
             $table->date('expiry_date')->default(Carbon::now());
             $table->timestamps();
         });
+        Schema::disableForeignKeyConstraints();
     }
 
     /**
@@ -33,6 +36,9 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('coupons');
+        Schema::enableForeignKeyConstraints();
+       
     }
 };
