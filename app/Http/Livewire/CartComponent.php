@@ -84,6 +84,7 @@ class CartComponent extends Component
     }
 
     public function calculateDiscounts(){
+
         if(session()->has('coupon')){
              if(session()->get('coupon')['type'] == 'fixed'){
                $this->discount = session()->get('coupon')['value'];
@@ -95,6 +96,7 @@ class CartComponent extends Component
              $this->taxAfterDiscount = ($this->subtotalAfterDiscount * config('cart.tax'))/100;
              $this->totalAfterDiscount = $this->subtotalAfterDiscount + $this->taxAfterDiscount;
         }
+        
     }
 
     public function removeCoupon(){
