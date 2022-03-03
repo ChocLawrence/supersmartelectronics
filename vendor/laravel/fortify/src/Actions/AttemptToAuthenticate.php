@@ -2,6 +2,8 @@
 
 namespace Laravel\Fortify\Actions;
 
+use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Failed;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Validation\ValidationException;
@@ -54,6 +56,17 @@ class AttemptToAuthenticate
             $request->only(Fortify::username(), 'password'),
             $request->boolean('remember'))
         ) {
+
+            if(Auth::user()->utype === 'adm'){
+                session(['utype'=>'adm']);
+                return redirect(RouteServiceProvider::HOME);
+                
+            }else if(Auth::user()->utype === 'usr'){
+           
+                session(['utype'=>'adm']);
+                return redirect(RouteServiceProvider::HOME);
+            }
+
             return $next($request);
         }
 
