@@ -9,7 +9,7 @@ use App\Http\Livewire\DetailsComponent;
 use App\Http\Livewire\CategoryComponent;
 use App\Http\Livewire\SearchComponent;
 use App\Http\Livewire\WishlistComponent;
-use App\Http\Livewire\ThankYouComponent;
+use App\Http\Livewire\ThankyouComponent;
 use App\Http\Livewire\ContactComponent;
 
 use App\Http\Livewire\User\UserDashboardComponent;
