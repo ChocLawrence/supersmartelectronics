@@ -16,8 +16,7 @@ class AuthAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        //dd(session('utype'));
-        if(session('utype')=='adm'){
+        if(session('utype')==='adm'){
             return $next($request);
         }else{
             session()->flush();
