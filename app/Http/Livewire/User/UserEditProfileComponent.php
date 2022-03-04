@@ -5,6 +5,8 @@ namespace App\Http\Livewire\User;
 use Livewire\Component;
 use App\Models\Profile;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 use App\Models\User;
 use Carbon\Carbon;
 use Livewire\WithFileUploads;
@@ -54,8 +56,14 @@ class UserEditProfileComponent extends Component
                 }
             }
 
-            $imageName = Carbon::now()->timestamp.'.'.$this->newimage->extension();
-            $this->newimage->storeAs('profile',$imageName);
+            $imageName = Carbon::now()->timestamp.'.'.$this->newimage->getClientOriginalExtension();
+            if(!Storage::disk('public')->exists('/profile'))
+            {
+                Storage::disk('public')->makeDirectory('/profile');
+            }
+            $profileImage = Image::make($this->newimage)->save();
+            Storage::disk('public')->put('profile/'.$imageName,$profileImage);
+
             $user->profile->image = $imageName;
         }
 

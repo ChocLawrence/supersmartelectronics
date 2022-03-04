@@ -6,6 +6,8 @@ use Livewire\Component;
 use Livewire\WithFileUploads;
 use Carbon\Carbon;
 use App\Models\Category;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 use App\Models\Subcategory;
 use App\Models\AttributeValue;
 use App\Models\ProductAttribute;
@@ -159,8 +161,13 @@ class AdminEditProductComponent extends Component
                 }
             }
 
-            $imageName = Carbon::now()->timestamp.'.'.$this->newimage->extension();
-            $this->newimage->storeAs('products',$imageName);
+            $imageName = Carbon::now()->timestamp.'.'.$this->newimage->getClientOriginalExtension();
+            if(!Storage::disk('public')->exists('/products'))
+            {
+                Storage::disk('public')->makeDirectory('/products');
+            }
+            $newImage = Image::make($this->newimage)->resize(800,800)->save();
+            Storage::disk('public')->put('products/'.$imageName,$newImage);
             $product->image = $imageName;
         }
 
@@ -178,8 +185,13 @@ class AdminEditProductComponent extends Component
 
             $imagesname = '';
             foreach($this->newimages as $key=>$image){
-                $imgName = Carbon::now()->timestamp.$key.'.'.$image->extension();
-                $image->storeAs('products',$imgName);
+                $imgName = Carbon::now()->timestamp.$key.'.'.$image->getClientOriginalExtension();
+                if(!Storage::disk('public')->exists('/products'))
+                {
+                    Storage::disk('public')->makeDirectory('/products');
+                }
+                $img = Image::make($image)->resize(800,800)->save();
+                Storage::disk('public')->put('products/'.$imgName,$img);
                 $imagesname =  $imagesname .','. $imgName ;
             }
 

@@ -55,11 +55,7 @@
                                 Image
                                 </label>
                                 <div class="col-md-4">
-                                    <input type="file" placeholder="Image" class="input-file"  wire:model="image" id="image"/>
-                                    @if($image)
-                                        <img id="preview-image-before-upload" src="{{$image->temporaryUrl()}}"
-                                        alt="preview image" style="width: 120px;">
-                                    @endif
+                                    <input type="file" placeholder="Image" class="input-file"  wire:model="image"/>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -88,11 +84,3 @@
         </div>
       </div>
 </div>
-
-@push('scripts')
-<script type="text/javascript">
-      
-   
-     
-    </script>
-@endpush

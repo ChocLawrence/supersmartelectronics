@@ -12,9 +12,7 @@
                         @endif
                         <form wire:submit.prevent="updateProfile">
                             <div class="col-md-4">
-                                @if($newimage)
-                                   <img src="{{$newimage->temporaryUrl()}}" width="100%">
-                                @elseif($image)
+                                @if($image)
                                    <img src="{{asset('assets/images/profile')}}/{{$image}}" width="100%">
                                 @else
                                    <img src="{{asset('assets/images/profile/default.jpeg')}}" width="100%">

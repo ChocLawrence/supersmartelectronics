@@ -4,6 +4,8 @@ namespace App\Http\Livewire\Admin;
 
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 use Carbon\Carbon;
 use App\Models\Category; 
 use App\Models\ProductAttribute;
@@ -98,15 +100,28 @@ class AdminAddProductComponent extends Component
         $product->stock_status =  $this->stock_status;
         $product->featured =  $this->featured;
         $product->quantity =  $this->quantity;
-        $imageName = Carbon::now()->timestamp.'.'.$this->image->extension();
-        $this->image->storeAs('products',$imageName);
+        $imageName = Carbon::now()->timestamp.'.'.$this->image->getClientOriginalExtension();
+        if(!Storage::disk('public')->exists('/products'))
+        {
+            Storage::disk('public')->makeDirectory('/products');
+        }
+        $productImage = Image::make($this->image)->resize(800,800)->save();
+        Storage::disk('public')->put('products/'.$imageName,$productImage);
+
+
         $product->image = $imageName;
 
         if($this->images){
             $imagesname = '';
             foreach($this->images as $key=>$image){
-                $imgName = Carbon::now()->timestamp.$key.'.'.$image->extension();
-                $image->storeAs('products',$imgName);
+                $imgName = Carbon::now()->timestamp.$key.'.'.$image->getClientOriginalExtension();
+                if(!Storage::disk('public')->exists('/products'))
+                {
+                    Storage::disk('public')->makeDirectory('/products');
+                }
+                $img = Image::make($image)->resize(800,800)->save();
+                Storage::disk('public')->put('products/'.$imgName,$img);
+
                 $imagesname =  $imagesname .','. $imgName ;
             }
             $product->images = $imagesname;
