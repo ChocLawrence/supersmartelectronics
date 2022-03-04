@@ -56,9 +56,9 @@
                                 </label>
                                 <div class="col-md-4">
                                     <input type="file" placeholder="Image" class="input-file"  wire:model="image"/>
-                                    @if($image)
+                                    {{-- @if($image)
                                         <img src="{{$image->temporaryUrl()}}" width="120">
-                                    @endif
+                                    @endif --}}
                                 </div>
                             </div>
                             <div class="form-group">
