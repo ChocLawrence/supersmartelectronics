@@ -17,7 +17,7 @@
                         @if(Session::has('message'))
                             <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
                         @endif
-                       <form action="" class="form-horizontal" wire:submit.prevent="addSlide">
+                       <form action="" class="form-horizontal" wire:submit.prevent="addSlide" enctype="multipart/form-data">
                            <div class="form-group">
                                <label class="col-md-4 control-label">
                                  Title
