@@ -3,6 +3,8 @@
 namespace App\Http\Livewire\Admin;
 
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 use Carbon\Carbon;
 use Livewire\Component;
 use App\Models\HomeSlider;
