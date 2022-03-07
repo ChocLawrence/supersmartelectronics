@@ -31,7 +31,6 @@ class AdminAddHomeSliderComponent extends Component
         $slider->subtitle =  $this->subtitle;
         $slider->price =  $this->price;
         $slider->link =  $this->link;
-        dd($this->image);
         $imageName = Carbon::now()->timestamp.'.'.$this->image->extension();
         if(!Storage::disk('public')->exists('/sliders'))
         {
