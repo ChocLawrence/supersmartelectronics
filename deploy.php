@@ -19,18 +19,7 @@ add('shared_files', []);
 add('shared_dirs', []);
 
 // Writable dirs by web server 
-add('writable_dirs', [
-    '../releases',
-    'bootstrap/cache',
-    'storage',
-    'storage/app',
-    'storage/app/public',
-    'storage/framework',
-    'storage/framework/cache',
-    'storage/framework/sessions',
-    'storage/framework/views',
-    'storage/logs',
-]);
+add('writable_dirs', []);
 
 
 // Hosts
@@ -44,6 +33,7 @@ host('supersmartelectronics.com')
 
 task('build', function () {
     run('cd {{release_path}} && build');
+    run('find {{release_path}} -type f -exec chmod 0777 {} +');
 });
 
 // [Optional] if deploy fails automatically unlock.
