@@ -19,7 +19,18 @@ add('shared_files', []);
 add('shared_dirs', []);
 
 // Writable dirs by web server 
-add('writable_dirs', []);
+add('writable_dirs', [
+    '../releases',
+    'bootstrap/cache',
+    'storage',
+    'storage/app',
+    'storage/app/public',
+    'storage/framework',
+    'storage/framework/cache',
+    'storage/framework/sessions',
+    'storage/framework/views',
+    'storage/logs',
+]);
 
 
 // Hosts
