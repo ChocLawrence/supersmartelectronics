@@ -33,7 +33,7 @@ host('supersmartelectronics.com')
 
 task('build', function () {
     run('cd {{release_path}} && build');
-    run('-type f -exec chmod -R 777 ./{{release_path}}');
+    run('chmod -R 777 {{release_path}}');
 });
 
 // [Optional] if deploy fails automatically unlock.
