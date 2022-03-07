@@ -69,6 +69,8 @@ class ShopComponent extends Component
             $products = Product::whereBetween('regular_price',[$this->min_price,$this->max_price,])->paginate($this->pagesize);
         }
 
+
+        $popular_products = Product::inRandomOrder()->limit(6)->get();
         $categories = Category::all();
 
 
@@ -78,6 +80,6 @@ class ShopComponent extends Component
         }
 
 
-        return view('livewire.shop-component',['products'=>$products,'categories'=>$categories])->layout('layouts.base');
+        return view('livewire.shop-component',['products'=>$products,'categories'=>$categories,'popular_products'=>$popular_products])->layout('layouts.base');
     }
 }

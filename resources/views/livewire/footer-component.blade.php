@@ -182,7 +182,7 @@
                                 <h3 class="backlink-title">Quick Links</h3>
                                 <div class="back-link-row">
                                     <ul class="list-back-link" >
-                                        <li><span class="row-title">Mobiles:</span></li>
+                                        <li><span class="row-title">Phones:</span></li>
                                         <li><a href="#" class="redirect-back-link" title="mobile">Mobiles</a></li>
                                         <li><a href="#" class="redirect-back-link" title="yphones">YPhones</a></li>
                                         <li><a href="#" class="redirect-back-link" title="Gianee Mobiles GL">Gianee Mobiles GL</a></li>
@@ -196,7 +196,7 @@
                                     </ul>
 
                                     <ul class="list-back-link" >
-                                        <li><span class="row-title">Tablets:</span></li>
+                                        <li><span class="row-title">Laptops:</span></li>
                                         <li><a href="#" class="redirect-back-link" title="Plesc YPads">Plesc YPads</a></li>
                                         <li><a href="#" class="redirect-back-link" title="Samsyng Tablets" >Samsyng Tablets</a></li>
                                         <li><a href="#" class="redirect-back-link" title="Qindows Tablets" >Qindows Tablets</a></li>
@@ -207,20 +207,6 @@
                                         <li><a href="#" class="redirect-back-link" title="Tablets Swipe" >Tablets Swipe</a></li>
                                         <li><a href="#" class="redirect-back-link" title="Tablets TVs, Audio" >Tablets TVs, Audio</a></li>
                                     </ul>
-
-                                    <ul class="list-back-link" >
-                                        <li><span class="row-title">Fashion:</span></li>
-                                        <li><a href="#" class="redirect-back-link" title="Sarees Silk" >Sarees Silk</a></li>
-                                        <li><a href="#" class="redirect-back-link" title="sarees Salwar" >sarees Salwar</a></li>
-                                        <li><a href="#" class="redirect-back-link" title="Suits Lehengas" >Suits Lehengas</a></li>
-                                        <li><a href="#" class="redirect-back-link" title="Biba Jewellery" >Biba Jewellery</a></li>
-                                        <li><a href="#" class="redirect-back-link" title="Rings Earrings" >Rings Earrings</a></li>
-                                        <li><a href="#" class="redirect-back-link" title="Diamond Rings" >Diamond Rings</a></li>
-                                        <li><a href="#" class="redirect-back-link" title="Loose Diamond Shoes" >Loose Diamond Shoes</a></li>
-                                        <li><a href="#" class="redirect-back-link" title="BootsMen Watches" >BootsMen Watches</a></li>
-                                        <li><a href="#" class="redirect-back-link" title="Women Watches" >Women Watches</a></li>
-                                    </ul>
-
                                 </div>
                             </div>
                         </div>
@@ -232,7 +218,7 @@
 			<div class="coppy-right-box">
 				<div class="container">
 					<div class="coppy-right-item item-left">
-						<p class="coppy-right-text">Copyright © 2020 Surfside Media. All rights reserved</p>
+						<p class="coppy-right-text">Copyright © 2022 Super Smart Electronics. All rights reserved</p>
 					</div>
 					<div class="coppy-right-item item-right">
 						<div class="wrap-nav horizontal-nav">
