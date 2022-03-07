@@ -38,8 +38,8 @@ return [
 
         'public' => [
             'driver' => 'local',
-            'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'root' => public_path('assets/images'),
+            'url' => env('APP_URL').'/public',
             'visibility' => 'public',
         ],
 
@@ -53,9 +53,7 @@ return [
             'endpoint' => env('AWS_ENDPOINT'),
             'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
         ],
-
     ],
-
     /*
     |--------------------------------------------------------------------------
     | Symbolic Links
@@ -66,9 +64,7 @@ return [
     | the locations of the links and the values should be their targets.
     |
     */
-
     'links' => [
-        storage_path('app/public') => public_path('assets/images')
+        public_path('storage') => storage_path('app/public'),
     ],
-
 ];
