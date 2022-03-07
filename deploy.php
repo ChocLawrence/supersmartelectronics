@@ -23,7 +23,6 @@ add('writable_dirs', []);
 
 
 // Hosts
-
 host('supersmartelectronics.com')
     ->user('lawrence')
     ->identityFile('~/.ssh/sselectronics_deployerkey')
