@@ -3,8 +3,6 @@
 namespace App\Http\Livewire\Admin;
 
 use Livewire\WithFileUploads;
-use Illuminate\Support\Facades\Storage;
-use Intervention\Image\Facades\Image;
 use Carbon\Carbon;
 use Livewire\Component;
 use App\Models\HomeSlider;
@@ -42,19 +40,15 @@ class AdminEditHomeSliderComponent extends Component
         $slider->price =  $this->price;
         $slider->link =  $this->link;
         if($this->newimage){
-
-            if (Storage::disk('public')->exists('sliders/'.$slider->image))
-            {
-                Storage::disk('public')->delete('sliders/'.$slider->image);
+            
+            if(!empty($slider->image)){
+                if (file_exists(public_path('assets/images/sliders'.'/'.$slider->image))) {
+                   unlink('assets/images/sliders'.'/'.$slider->image);
+                }
             }
 
-            $imageName = Carbon::now()->timestamp.'.'.$this->newimage->getClientOriginalExtension();
-            if(!Storage::disk('public')->exists('/sliders'))
-            {
-                Storage::disk('public')->makeDirectory('/sliders');
-            }
-            $slideImage = Image::make($this->newimage)->save();
-            Storage::disk('public')->put('sliders/'.$imageName,$slideImage);
+            $imageName = Carbon::now()->timestamp.'.'.$this->newimage->extension();
+            $this->newimage->storeAs('sliders',$imageName);
             $slider->image =  $imageName;
         }
         $slider->status =  $this->status;

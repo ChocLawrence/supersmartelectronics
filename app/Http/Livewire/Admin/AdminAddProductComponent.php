@@ -100,28 +100,15 @@ class AdminAddProductComponent extends Component
         $product->stock_status =  $this->stock_status;
         $product->featured =  $this->featured;
         $product->quantity =  $this->quantity;
-        $imageName = Carbon::now()->timestamp.'.'.$this->image->getClientOriginalExtension();
-        if(!Storage::disk('public')->exists('/products'))
-        {
-            Storage::disk('public')->makeDirectory('/products');
-        }
-        $productImage = Image::make($this->image)->resize(800,800)->save();
-        Storage::disk('public')->put('products/'.$imageName,$productImage);
-
-
+        $imageName = Carbon::now()->timestamp.'.'.$this->image->extension();
+        $this->image->storeAs('products',$imageName);
         $product->image = $imageName;
 
         if($this->images){
             $imagesname = '';
             foreach($this->images as $key=>$image){
-                $imgName = Carbon::now()->timestamp.$key.'.'.$image->getClientOriginalExtension();
-                if(!Storage::disk('public')->exists('/products'))
-                {
-                    Storage::disk('public')->makeDirectory('/products');
-                }
-                $img = Image::make($image)->resize(800,800)->save();
-                Storage::disk('public')->put('products/'.$imgName,$img);
-
+                $imgName = Carbon::now()->timestamp.'.'.$image->extension();
+                $image->storeAs('products',$imgName);
                 $imagesname =  $imagesname .','. $imgName ;
             }
             $product->images = $imagesname;

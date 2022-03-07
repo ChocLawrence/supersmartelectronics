@@ -13,9 +13,10 @@ class AdminHomeSliderComponent extends Component
         
         $slider = HomeSlider::find($slide_id);
 
-        if (Storage::disk('public')->exists('sliders/'.$slider->image))
-        {
-            Storage::disk('public')->delete('sliders/'.$slider->image);
+        if(!empty($slider->image)){
+            if (file_exists(public_path('assets/images/sliders'.'/'.$slider->image))) {
+               unlink('assets/images/sliders'.'/'.$slider->image);
+            }
         }
 
         $slider->delete();

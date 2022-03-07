@@ -56,6 +56,11 @@
                                 </label>
                                 <div class="col-md-4">
                                     <input type="file" placeholder="Image" class="input-file"  wire:model="newimage"/>
+                                    @if ($newimage)
+                                        <img src="{{ $newimage->temporaryUrl() }}" width="120">
+                                    @else    
+                                        <img src="{{asset('assets/images/sliders')}}/{{$image}}" width="120">
+                                    @endif
                                 </div>
                             </div>
                             <div class="form-group">
