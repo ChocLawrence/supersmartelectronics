@@ -261,11 +261,11 @@
 
     var slider = document.getElementById('slider');
     noUiSlider.create(slider,{
-       start:[1,1000],
+       start:[1,2500],
        connect:true,
        range:{
            min:1,
-           max:1000
+           max:2500
        },
        pips:{
            mode:'steps',
