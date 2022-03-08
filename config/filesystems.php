@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'default' => env('FILESYSTEM_DISK', 'local'),
+    'default' => env('FILESYSTEM_DRIVER', 'local'),
 
     /*
     |--------------------------------------------------------------------------
@@ -32,14 +32,13 @@ return [
 
         'local' => [
             'driver' => 'local',
-            //'root' => storage_path('app'),
-            'root' => public_path('assets/images'),
+            'root' => storage_path('app'),
         ],
 
         'public' => [
             'driver' => 'local',
-            'root' => public_path('assets/images'),
-            'url' => env('APP_URL').'/public',
+            'root' => storage_path('app/public/assets/images'),
+            'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
 
@@ -51,9 +50,10 @@ return [
             'bucket' => env('AWS_BUCKET'),
             'url' => env('AWS_URL'),
             'endpoint' => env('AWS_ENDPOINT'),
-            'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
         ],
+
     ],
+
     /*
     |--------------------------------------------------------------------------
     | Symbolic Links
@@ -64,7 +64,9 @@ return [
     | the locations of the links and the values should be their targets.
     |
     */
+
     'links' => [
         public_path('storage') => storage_path('app/public'),
     ],
+
 ];
