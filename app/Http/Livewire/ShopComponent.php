@@ -79,7 +79,6 @@ class ShopComponent extends Component
             Cart::instance('wishlist')->store(Auth::user()->email);
         }
 
-
         return view('livewire.shop-component',['products'=>$products,'categories'=>$categories,'popular_products'=>$popular_products])->layout('layouts.base');
     }
 }

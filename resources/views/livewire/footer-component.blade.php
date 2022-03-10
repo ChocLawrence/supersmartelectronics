@@ -81,7 +81,13 @@
                                     <div class="item-content">
                                         <div class="wrap-hotline-footer">
                                             <span class="desc">Call Us toll Free</span>
-                                            <b class="phone-number">{{$setting->phone2}}</b>
+                                            <b class="phone-number">{{$setting->phone}}, {{$setting->phone2}}</b>
+                                        </div>
+                                        <div class="wrap-hotline-footer" title="Get to us on whatsapp">
+                                            <span class="desc">Reach out via whatsapp</span>
+                                            <a href="https://api.whatsapp.com/send?phone={{$setting->phone}}&text='Hello Super smart electronics'">
+                                               <img src="{{asset('assets/images/whatsapp.png')}}" style="max-width: 50px;">
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
@@ -181,32 +187,16 @@
                             <div class="back-link-box">
                                 <h3 class="backlink-title">Quick Links</h3>
                                 <div class="back-link-row">
-                                    <ul class="list-back-link" >
-                                        <li><span class="row-title">Phones:</span></li>
-                                        <li><a href="#" class="redirect-back-link" title="mobile">Mobiles</a></li>
-                                        <li><a href="#" class="redirect-back-link" title="yphones">YPhones</a></li>
-                                        <li><a href="#" class="redirect-back-link" title="Gianee Mobiles GL">Gianee Mobiles GL</a></li>
-                                        <li><a href="#" class="redirect-back-link" title="Mobiles Karbonn">Mobiles Karbonn</a></li>
-                                        <li><a href="#" class="redirect-back-link" title="Mobiles Viva">Mobiles Viva</a></li>
-                                        <li><a href="#" class="redirect-back-link" title="Mobiles Intex">Mobiles Intex</a></li>
-                                        <li><a href="#" class="redirect-back-link" title="Mobiles Micrumex">Mobiles Micrumex</a></li>
-                                        <li><a href="#" class="redirect-back-link" title="Mobiles Bsus">Mobiles Bsus</a></li>
-                                        <li><a href="#" class="redirect-back-link" title="Mobiles Samsyng">Mobiles Samsyng</a></li>
-                                        <li><a href="#" class="redirect-back-link" title="Mobiles Lenova">Mobiles Lenova</a></li>
-                                    </ul>
-
-                                    <ul class="list-back-link" >
-                                        <li><span class="row-title">Laptops:</span></li>
-                                        <li><a href="#" class="redirect-back-link" title="Plesc YPads">Plesc YPads</a></li>
-                                        <li><a href="#" class="redirect-back-link" title="Samsyng Tablets" >Samsyng Tablets</a></li>
-                                        <li><a href="#" class="redirect-back-link" title="Qindows Tablets" >Qindows Tablets</a></li>
-                                        <li><a href="#" class="redirect-back-link" title="Calling Tablets" >Calling Tablets</a></li>
-                                        <li><a href="#" class="redirect-back-link" title="Micrumex Tablets" >Micrumex Tablets</a></li>
-                                        <li><a href="#" class="redirect-back-link" title="Lenova Tablets Bsus" >Lenova Tablets Bsus</a></li>
-                                        <li><a href="#" class="redirect-back-link" title="Tablets iBall" >Tablets iBall</a></li>
-                                        <li><a href="#" class="redirect-back-link" title="Tablets Swipe" >Tablets Swipe</a></li>
-                                        <li><a href="#" class="redirect-back-link" title="Tablets TVs, Audio" >Tablets TVs, Audio</a></li>
-                                    </ul>
+                                    @foreach($categories as $category)
+                                        <ul class="list-back-link" >
+                                            <li><span class="row-title">{{$category->name}}</span></li>
+                                            @if(count($category->subCategories) > 0)
+                                               @foreach($category->subCategories as $scategory)
+                                                <li><a href="/product-category/{{$category->slug}}/{{$scategory->slug}}" class="redirect-back-link" title="mobile">{{$scategory->name}}</a></li>
+                                               @endforeach 
+                                            @endif
+                                        </ul>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
