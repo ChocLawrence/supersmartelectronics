@@ -62,7 +62,7 @@
                                                 </li>
                                                 <li>
                                                     <i class="fa fa-phone" aria-hidden="true"></i>
-                                                    <p class="contact-txt">{{$setting->phone}}</p>
+                                                    <p class="contact-txt">+1{{$setting->phone}}</p>
                                                 </li>
                                                 <li>
                                                     <i class="fa fa-envelope" aria-hidden="true"></i>
