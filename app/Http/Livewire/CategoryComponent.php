@@ -44,14 +44,18 @@ class CategoryComponent extends Component
         if($this->scategory_slug){
             $scategory = Subcategory::where('slug',$this->scategory_slug)->first();
             
-            $category_id = $scategory->id;
-            $category_name = $scategory->name;
+            if($scategory){
+                $category_id = $scategory->id;
+                $category_name = $scategory->name;
+            }
             $filter = "sub";
     
         }else{
             $category = Category::where('slug',$this->category_slug)->first();
-            $category_id = $category->id;
-            $category_name = $category->name;
+            if($category){
+                $category_id = $category->id;
+                $category_name = $category->name;
+            }
             $filter = "";
         }
        
