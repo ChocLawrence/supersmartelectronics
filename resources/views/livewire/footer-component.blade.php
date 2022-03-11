@@ -81,11 +81,11 @@
                                     <div class="item-content">
                                         <div class="wrap-hotline-footer">
                                             <span class="desc">Call Us toll Free</span>
-                                            <b class="phone-number">{{$setting->phone}}, {{$setting->phone2}}</b>
+                                            <b class="phone-number">+1{{$setting->phone}}</b>
                                         </div>
                                         <div class="wrap-hotline-footer" title="Get to us on whatsapp">
                                             <span class="desc">Reach out via whatsapp</span>
-                                            <a href="https://api.whatsapp.com/send?phone={{$setting->phone}}&text='Hello Super smart electronics'">
+                                            <a href="https://api.whatsapp.com/send?phone=+1{{$setting->phone}}&text='Hello Super smart electronics'">
                                                <img src="{{asset('assets/images/whatsapp.png')}}" style="max-width: 50px;">
                                             </a>
                                         </div>

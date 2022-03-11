@@ -120,18 +120,19 @@ class AdminAddProductComponent extends Component
         }
         $product->save();
 
-        foreach($this->attribute_values as $key=>$attribute_value){
-           $avalues = explode(",",$attribute_value);
-
-           foreach($avalues as $avalue){
-                $attr_value = new AttributeValue();
-                $attr_value->product_attribute_id = $key;
-                $attr_value->value = $avalue;
-                $attr_value->product_id = $product->id;
-                $attr_value->save();
-           }
+        if($this->attribute_values){
+            foreach($this->attribute_values as $key=>$attribute_value){
+                $avalues = explode(",",$attribute_value);
+     
+                foreach($avalues as $avalue){
+                     $attr_value = new AttributeValue();
+                     $attr_value->product_attribute_id = $key;
+                     $attr_value->value = $avalue;
+                     $attr_value->product_id = $product->id;
+                     $attr_value->save();
+                }
+             }
         }
-
         session()->flash('message','Product has been added successfully');
 
     }
