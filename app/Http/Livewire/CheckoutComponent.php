@@ -54,7 +54,6 @@ class CheckoutComponent extends Component
             'province' => 'required',
             'country' => 'required',
             'zipcode' => 'required',
-            'paymentmode' => 'required'
         ]);
 
         if($this->ship_to_different){
@@ -84,12 +83,11 @@ class CheckoutComponent extends Component
             'city' => 'required',
             'province' => 'required',
             'country' => 'required',
-            'zipcode' => 'required',
-            'paymentmode' => 'required'
+            'zipcode' => 'required'
         ]);
 
         $order = new Order();
-        $order->user_id = Auth::user()->id;
+        $order->user_id = 4; // Auth::user()->id;
         $order->subtotal = session()->get('checkout')['subtotal'];
         $order->discount = session()->get('checkout')['discount'];
         $order->tax = session()->get('checkout')['tax'];
@@ -150,10 +148,10 @@ class CheckoutComponent extends Component
 
         }
 
-        if($this->paymentmode == 'cod'){
-            $this->makeTransaction($order->id,"pending");
-            $this->resetCart();
-        }
+        //if($this->paymentmode == 'cod'){
+        $this->makeTransaction($order->id,"pending");
+        $this->resetCart();
+        //}
 
         $this->sendOrderConfirmationMail($order);
         
@@ -168,9 +166,9 @@ class CheckoutComponent extends Component
 
     public function makeTransaction($order_id,$status){
         $transaction = new Transaction();
-        $transaction->user_id =  Auth::user()->id;
+        $transaction->user_id =  4 ; //Auth::user()->id;
         $transaction->order_id = $order_id;
-        $transaction->mode = $this->paymentmode;
+        $transaction->mode = 'cod'; //$this->paymentmode;
         $transaction->status = $status;
         $transaction->save();
     }
@@ -181,10 +179,10 @@ class CheckoutComponent extends Component
     }
 
     public function verifyForCheckout(){
-
-        if(!Auth::check()){
-            return redirect()->route('login');
-        }else if($this->thankyou){
+        // if(!Auth::check()){
+        //     return redirect()->route('login');
+        // }else 
+        if($this->thankyou){
             return redirect()->route('thankyou');
         }else if(!session()->get('checkout')){
             return redirect()->route('product.cart');

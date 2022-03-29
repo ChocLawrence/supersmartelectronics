@@ -147,13 +147,13 @@
                 <div class="summary-item payment-method">
                     <h4 class="title-box">Payment Method</h4>
                     <p class="summary-info"><span class="title"><img src="{{asset('assets/images/payment.png')}}" style="max-width: 260px;"></span></p>
-                    <div class="choose-payment-methods">
+                    {{-- <div class="choose-payment-methods">
                         <label class="payment-method">
                             <input name="payment-method" id="payment-method-bank" value="cod" type="radio" wire:model="paymentmode">
                             <span>Confirm</span>
                             <span class="payment-desc">Confirm payment through one of the modes above.</span>
                             @error('paymentmode') <span class="text-danger">{{$message}}</span> @enderror
-                        </label>
+                        </label> --}}
                         {{-- <label class="payment-method">
                             <input name="payment-method" id="payment-method-visa" value="card" type="radio"  wire:model="paymentmode">
                             <span>Debit / Credit Card</span>
@@ -165,8 +165,8 @@
                             <span class="payment-desc">You can pay with your credit</span>
                             <span class="payment-desc">card if you don't have a paypal account</span>
                         </label> --}}
-                        @error('paymentmode') <span class="text-danger">{{$message}}</span> @enderror
-                    </div>
+                        {{-- @error('paymentmode') <span class="text-danger">{{$message}}</span> @enderror
+                    </div> --}}
                     @if(Session::has('checkout'))
                       <p class="summary-info grand-total"><span>Grand Total</span> <span class="grand-total-price">${{Session::get('checkout')['total']}}</span></p>
                     @endif
